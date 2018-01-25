@@ -1,0 +1,27 @@
+{
+  "name": "node-serve",
+  "version": "1.0.0",
+  "description": "nodejs服务端练习项目",
+  "main": "index.js",
+  "dependencies": {
+    "mime": "^2.2.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tony-yyj/node-serve.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "tony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tony-yyj/node-serve/issues"
+  },
+  "homepage": "https://github.com/tony-yyj/node-serve#readme"
+}
