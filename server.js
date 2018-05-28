@@ -1,13 +1,13 @@
 // 提供http服务端和客户端功能
-var http = require('http');
+let http = require('http');
 // 提供文件系统相关功能
-var fs = require('fs');
+let fs = require('fs');
 // 提供与文件系统路径相关功能
-var path = require('path');
+let path = require('path');
 // 根据文件扩展名得出MIME类型的能力
-var mime = require('mime');
+let mime = require('mime');
 // 缓存文件内容的对象
-var cache = {};
+let cache = {};
 
 function send404(response) {
     response.writeHead(404, {'Content-Type': 'text/plain'});
@@ -50,21 +50,21 @@ function serveStatic(response, cache, absPath) {
 }
 
 // 创建http服务器，定义对请求的处理
-var server = http.createServer(function(request, response) {
-    var filePath = false;
+let server = http.createServer(function(request, response) {
+    let filePath = false;
     // 处理请求的文件路径
-    if (request.url == '/') {
+    if (request.url === '/') {
         filePath = 'public/index.html'
     } else {
         filePath = 'public' + request.url;
     }
-    var absPath = './' + filePath;
+    let absPath = './' + filePath;
     // 返回静态文件
     serveStatic(response, cache, absPath);
 });
 
 
-var chartServer = require('./lib/chat_server');
+let chartServer = require('./lib/chat_server');
 
 chartServer.listen(server);
 

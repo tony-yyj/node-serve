@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io.connect('http://localhost:8080/thinkphp_3.2.3_full/index.php');
 
 $(document).ready(function(){
     var chatApp = new Chat(socket);
