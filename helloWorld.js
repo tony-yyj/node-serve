@@ -29,10 +29,15 @@ http.createServer(function(req, res) {
             serveStaticFile(res, '/public/home.html', 'text/html');
             break;
         case '/about':
-            res.writeHead(200, {
-                'Content-Type': 'text/plain'
-            });
-            res.end('About');
+            // res.writeHead(200, {
+            //     'Content-Type': 'text/plain'
+            // });
+            // res.end('About');
+            //
+            console.log('test');
+            let stream = fs.createReadStream('./lib/origin.json');
+            stream.pipe(res);
+
             break;
         default:
             serveStaticFile(res, '/public/404.html', 'text/html');
