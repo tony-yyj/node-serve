@@ -9,6 +9,8 @@ let mime = require('mime');
 // 缓存文件内容的对象
 let cache = {};
 
+let update = require('./lib/update');
+
 function send404(response) {
     response.writeHead(404, {'Content-Type': 'text/plain'});
     response.write('Error 404: resource not found.');
@@ -51,22 +53,26 @@ function serveStatic(response, cache, absPath) {
 
 // 创建http服务器，定义对请求的处理
 let server = http.createServer(function(request, response) {
-    let filePath = false;
-    // 处理请求的文件路径
-    if (request.url === '/') {
-        filePath = 'public/index.html'
+    if (request.url === '/update') {
+
+        const fileName = '/Users/tony/oneroot/obj/dcex-counter-frontend/src/assets/i18n/ko.json';
+        // 处理更新
+        update.updateJson(fileName, response);
     } else {
-        filePath = 'public' + request.url;
+        let filePath = false;
+        // 处理请求的文件路径
+        if (request.url === '/') {
+            filePath = 'public/index.html'
+        } else {
+            filePath = 'public' + request.url;
+        }
+        let absPath = './' + filePath;
+        // 返回静态文件
+        serveStatic(response, cache, absPath);
     }
-    let absPath = './' + filePath;
-    // 返回静态文件
-    serveStatic(response, cache, absPath);
+
 });
 
-
-let chartServer = require('./lib/chat_server');
-
-chartServer.listen(server);
 
 server.listen(3000, function() {
     console.log("server listening on port 3000");
