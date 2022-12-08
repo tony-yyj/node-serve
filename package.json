@@ -4,7 +4,7 @@
   "description": "nodejs服务端练习项目",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express3-handlebars": "^0.5.2",
     "fs": "0.0.1-security",
     "mime": "^2.2.0",
